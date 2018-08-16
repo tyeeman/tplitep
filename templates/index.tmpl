@@ -1,0 +1,26 @@
+{{define "title"}}
+  A lightweight static blog generator
+{{end}}
+
+{{define "content"}}
+<h2>Tonys WebBlog</h2>
+<h3>Fill it with awesome content right now</h3>
+  
+      {{$l := len .}}
+      {{range $i, $e := .}}
+        
+          
+            <h3><a href="/{{$e.Title | slug}}.html">{{$e.Title}}</a></h3>
+            <small>
+              <em>
+                {{range $e.Tags}}
+                  <a href="/tags/{{. | slug}}.html" title="Posts Tagged {{.}}">{{.}}</a>&nbsp;
+                {{end}}
+              </em>
+            </small>
+            {{(printf "%s </br><small>[Read more](/%s.html)</small>" ($e.Content | summary) (.Title | slug)) | html}}
+          
+        
+{{end}}
+{{end}}
+
