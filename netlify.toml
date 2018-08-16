@@ -1,0 +1,4 @@
+# global context
+[build]
+  publish = "www"
+  command = "./litepub build"
